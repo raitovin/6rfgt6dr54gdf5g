@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>2</title>
+        <style>
+            body {
+                background-color: #111111;
+                color: red;
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: bold;
+                font-style: normal;
+                -webkit-font-smoothing : antialiased;
+                user-select: none;
+            }
+            .bg {
+                position: fixed;
+                top: -50%;
+                left: -50%;
+                right: -50%;
+                bottom: -50%;
+                width: 200%;
+                height: 200vh;
+                background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;;
+                background-repeat: repeat;
+                animation: bg-animation .2s infinite;
+                opacity: 0.9;
+                visibility: visible;
+            }
+            @keyframes bg-animation {
+                0% { transform: translate(0,0) }
+                10% { transform: translate(-5%,-5%) }
+                20% { transform: translate(-10%,5%) }
+                30% { transform: translate(5%,-10%) }
+                40% { transform: translate(-5%,15%) }
+                50% { transform: translate(-10%,5%) }
+                60% { transform: translate(15%,0) }
+                70% { transform: translate(0,10%) }
+                80% { transform: translate(-15%,0) }
+                90% { transform: translate(10%,5%) }
+                100% { transform: translate(5%,0) }
+            }
+            .date {
+                position: fixed;
+                top: 94%;
+                font-size: 18px;
+
+                /*-------------*/
+                text-shadow: 0 0 5px rgb(255, 0, 0);
+                filter: blur(0.007em);
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="bg"></div>
+
+        
+
+        <p class="date" id="date">error in the loading of the date</p>
+        <script>
+            var date = new Date()
+
+            var day = date.getDay()
+            var dayname = ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"]
+
+            //if (day == 0) {day += 1} else {day = day}
+
+            document.getElementById('date').innerHTML = date.getMonth() + "月" + date.getDate() + "日" + date.getFullYear() + "年 - " + dayname[day]
+        </script>
+    </body>
+</html>

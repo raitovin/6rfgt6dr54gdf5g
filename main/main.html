@@ -1,0 +1,142 @@
+<!Doctype html>
+<html ng-app="test">
+    <head>
+        <title>Welcome</title>
+        <style>
+            body {
+                background-color: #111111;
+                color: red;
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: bold;
+                font-style: normal;
+                -webkit-font-smoothing : antialiased;
+                user-select: none;
+            }
+            .intro {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .typing-txt {
+                width: 74.5ch;
+                animation: typing 2s steps(30), blink .5s step-end infinite alternate;
+                white-space: nowrap;
+                overflow: hidden;
+                border-right: 3px solid;
+                font-size: 18px;
+
+                text-shadow: 0 0 5px rgb(255, 0, 0);
+                user-select: none;
+                filter: blur(0.007em);
+            }
+            @keyframes typing {
+                from {
+                    width: 0;
+                }
+            }
+            @keyframes blink {
+                50% {
+                    border-color: transparent;
+                }
+            }
+            .bg {
+                position: fixed;
+                top: -50%;
+                left: -50%;
+                right: -50%;
+                bottom: -50%;
+                width: 200%;
+                height: 200vh;
+                background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;;
+                background-repeat: repeat;
+                animation: bg-animation .2s infinite;
+                opacity: 0.9;
+                visibility: visible;
+            }
+            @keyframes bg-animation {
+                0% { transform: translate(0,0) }
+                10% { transform: translate(-5%,-5%) }
+                20% { transform: translate(-10%,5%) }
+                30% { transform: translate(5%,-10%) }
+                40% { transform: translate(-5%,15%) }
+                50% { transform: translate(-10%,5%) }
+                60% { transform: translate(15%,0) }
+                70% { transform: translate(0,10%) }
+                80% { transform: translate(-15%,0) }
+                90% { transform: translate(10%,5%) }
+                100% { transform: translate(5%,0) }
+            }
+            .help {
+                display: none;
+                width: 150px;
+                height: 40px;
+                align-items: center;
+                justify-content: center;
+                position: fixed;
+                top: 50%;
+                right: 45%;
+                background-color: transparent;
+                border: 3px solid red; 
+                border-radius: 15px;
+                color: red;
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: bold;
+                font-style: normal;
+                -webkit-font-smoothing : antialiased;
+                user-select: none;
+                font-size: 20px;
+            }
+            .help:hover {
+                box-shadow: 0px 0px 15px red;
+                text-shadow: 0 0 5px rgb(255, 0, 0);
+                filter: blur(0.007em);
+                border: 3px solid rgba(255, 0, 0, 0.5)
+            }
+            .date {
+                position: fixed;
+                top: 94%;
+                font-size: 18px;
+
+                /*-------------*/
+                text-shadow: 0 0 5px rgb(255, 0, 0);
+                filter: blur(0.007em);
+            }
+        </style>
+    </head>
+    <body ng-controller="testctrl">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <div class="bg"></div>
+            <div class="intro" id="intro">
+                <p class="typing-txt">
+                    ようこそ、誰かはあなたに殺します。私がここにいるをてつだいます。していません・・・
+                </p>
+            </div>
+        <button onclick="help()" class="help" id="help">援助</button>
+        
+        <p class="date" id="date">error in the loading of the date</p>
+        
+        <script>
+            setTimeout(() => {
+                document.getElementById('help').style.display="flex"
+                document.getElementById('help').animate([
+                    {opacity: 0.0},
+                    {opacity: 1.0}
+                ], {
+                    duration: 2000,
+                })
+            }, 5000)
+            
+            function help() {
+                document.location.href = "./2.html"
+            }
+            var date = new Date()
+
+            var day = date.getDay()
+            var dayname = ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"]
+
+            //if (day == 0) {day += 1} else {day = day}
+
+            document.getElementById('date').innerHTML = date.getMonth() + "月" + date.getDate() + "日" + date.getFullYear() + "年 - " + dayname[day]
+        </script>
+    </body>
+</html>
